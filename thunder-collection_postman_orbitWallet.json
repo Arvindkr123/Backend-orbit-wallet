@@ -1,0 +1,90 @@
+{
+    "info": {
+        "_postman_id": "07e1a86e-27c1-4018-a26f-33343d342929",
+        "name": "orbitWallet",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "get user by id",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/users/6780f0fbdb331c134dd7108b",
+                    "path": [
+                        "api",
+                        "users",
+                        "6780f0fbdb331c134dd7108b"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                }
+            }
+        },
+        {
+            "name": "get transacatios",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/transactions/?status=success&type=credit",
+                    "query": [
+                        {
+                            "key": "status",
+                            "value": "success"
+                        },
+                        {
+                            "key": "type",
+                            "value": "credit"
+                        }
+                    ],
+                    "variable": [],
+                    "path": [
+                        "api",
+                        "transactions"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                }
+            }
+        },
+        {
+            "name": "get user transacatios",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/transactions/user/6780f0fbdb331c134dd7108d?status=pending",
+                    "query": [
+                        {
+                            "key": "status",
+                            "value": "pending"
+                        },
+                        {
+                            "key": "type",
+                            "value": "credit",
+                            "disabled": true
+                        }
+                    ],
+                    "variable": [],
+                    "path": [
+                        "api",
+                        "transactions",
+                        "user",
+                        "6780f0fbdb331c134dd7108d"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000"
+                }
+            }
+        }
+    ]
+}
