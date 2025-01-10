@@ -21,6 +21,7 @@ This project provides an API for managing and retrieving user transactions. It a
 ## How It Works
 
 ### System Flow Diagram
+
 ```mermaid
 graph TD
 
@@ -48,42 +49,48 @@ end
 ## API Endpoints
 
 ### 1. **Get User Transactions**
+
 #### Endpoint:
+
 ```
 GET /api/transactions/:userId
 ```
+
 #### Query Parameters:
-| Parameter   | Type   | Description                                        |
-|-------------|--------|----------------------------------------------------|
-| `status`    | String | Filter by transaction status (`success`, `pending`, `failed`). |
-| `type`      | String | Filter by transaction type (`credit`, `debit`).   |
-| `fromDate`  | Date   | Start date for filtering transactions.            |
-| `toDate`    | Date   | End date for filtering transactions.              |
+
+| Parameter  | Type   | Description                                                    |
+| ---------- | ------ | -------------------------------------------------------------- |
+| `status`   | String | Filter by transaction status (`success`, `pending`, `failed`). |
+| `type`     | String | Filter by transaction type (`credit`, `debit`).                |
+| `fromDate` | Date   | Start date for filtering transactions.                         |
+| `toDate`   | Date   | End date for filtering transactions.                           |
 
 #### Example Request:
+
 ```
 GET /api/transactions/64b1a7f5c2a4/userId?status=success&type=credit&fromDate=2023-01-01&toDate=2023-12-31
 ```
 
 #### Example Response:
+
 ```json
 {
-    "success": true,
-    "transactions": [
+  "success": true,
+  "transactions": [
+    {
+      "_id": "64b1a7f5c2a4",
+      "status": "success",
+      "type": "credit",
+      "transactionDate": "2023-01-15T12:34:56Z",
+      "amount": 1000,
+      "userDetails": [
         {
-            "_id": "64b1a7f5c2a4",
-            "status": "success",
-            "type": "credit",
-            "transactionDate": "2023-01-15T12:34:56Z",
-            "amount": 1000,
-            "userDetails": [
-                {
-                    "name": "John Doe",
-                    "phoneNumber": "1234567890"
-                }
-            ]
+          "name": "John Doe",
+          "phoneNumber": "1234567890"
         }
-    ]
+      ]
+    }
+  ]
 }
 ```
 
@@ -92,21 +99,23 @@ GET /api/transactions/64b1a7f5c2a4/userId?status=success&type=credit&fromDate=20
 ## Database Schema
 
 ### Transactions Collection
-| Field            | Type      | Description                          |
-|------------------|-----------|--------------------------------------|
-| `_id`            | ObjectId  | Unique identifier.                  |
-| `status`         | String    | Transaction status (`success`, `pending`, `failed`). |
-| `type`           | String    | Transaction type (`credit`, `debit`). |
-| `transactionDate`| Date      | Date of the transaction.             |
-| `amount`         | Number    | Transaction amount.                  |
-| `userId`         | ObjectId  | Reference to the user's ID.          |
+
+| Field             | Type     | Description                                          |
+| ----------------- | -------- | ---------------------------------------------------- |
+| `_id`             | ObjectId | Unique identifier.                                   |
+| `status`          | String   | Transaction status (`success`, `pending`, `failed`). |
+| `type`            | String   | Transaction type (`credit`, `debit`).                |
+| `transactionDate` | Date     | Date of the transaction.                             |
+| `amount`          | Number   | Transaction amount.                                  |
+| `userId`          | ObjectId | Reference to the user's ID.                          |
 
 ### Users Collection
-| Field       | Type   | Description          |
-|-------------|--------|----------------------|
-| `_id`       | ObjectId | Unique identifier.   |
-| `name`      | String  | Name of the user.    |
-| `phoneNumber`| String | User's phone number. |
+
+| Field         | Type     | Description          |
+| ------------- | -------- | -------------------- |
+| `_id`         | ObjectId | Unique identifier.   |
+| `name`        | String   | Name of the user.    |
+| `phoneNumber` | String   | User's phone number. |
 
 ---
 
@@ -128,3 +137,9 @@ GET /api/transactions/64b1a7f5c2a4/userId?status=success&type=credit&fromDate=20
    ```
 
 ---
+
+## This is api call using thunder client images
+
+![Alt Text](</Screenshot%20(5).png>)
+![Alt Text](</Screenshot%20(6).png>)
+![Alt Text](</Screenshot%20(7).png>)
